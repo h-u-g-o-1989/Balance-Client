@@ -6,6 +6,7 @@ export default class Signup extends Component {
   state = {
     username: "",
     password: "",
+    email: "",
     error: null,
   };
 
@@ -21,6 +22,7 @@ export default class Signup extends Component {
     const credentials = {
       username: this.state.username,
       password: this.state.password,
+      email: this.state.email
     };
     signup(credentials).then((res) => {
       // successful signup
@@ -30,7 +32,7 @@ export default class Signup extends Component {
       }
       localStorage.setItem("accessToken", res.data.accessToken);
       this.props.authenticate(res.data.user);
-      this.props.history.push("/");
+      this.props.history.push("/home");
     });
   };
 
@@ -44,8 +46,18 @@ export default class Signup extends Component {
             id="input-username"
             type="text"
             name="username"
-            placeholder="Text"
+            placeholder="Username"
             value={this.state.username}
+            onChange={this.handleInputChange}
+            required
+          />
+           <label htmlFor="input-email">Email</label>
+          <input
+            id="input-email"
+            type="text"
+            name="email"
+            placeholder="User Email"
+            value={this.state.email}
             onChange={this.handleInputChange}
             required
           />

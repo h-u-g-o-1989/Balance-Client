@@ -4,7 +4,10 @@ import LoadingComponent from "./components/Loading";
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage";
 import LogIn from "./pages/LogIn";
-import ProtectedPage from "./pages/ProtectedPage";
+import ProtectedHome from "./pages/ProtectedHome";
+import ProtectedUpload from "./pages/ProtectedUpload";
+import ProtectedWeekly from "./pages/ProtectedWeekly";
+import ProtectedResources from "./pages/ProtectedResources";
 import Signup from "./pages/Signup";
 import NormalRoute from "./routing-components/NormalRoute";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
@@ -98,8 +101,26 @@ class App extends React.Component {
           />
           <ProtectedRoute
             exact
-            path={PATHS.PROTECTEDPAGE}
-            component={ProtectedPage}
+            path={PATHS.PROTECTEDHOME}
+            component={ProtectedHome}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.PROTECTEDUPLOAD}
+            component={ProtectedUpload}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.PROTECTEDWEEKLY}
+            component={ProtectedWeekly}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.PROTECTEDRESOURCES}
+            component={ProtectedResources}
             user={this.state.user}
           />
         </Switch>

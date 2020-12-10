@@ -5,15 +5,24 @@ import './Navbar.css';
 const Navbar = props => {
   return (
     <nav>
-      <Link to="/" className="nav__projectName">
+      {/* <Link to="/" className="nav__projectName">
         Balance
-      </Link>
+      </Link> */}
 
       <div className="nav__authLinks">
         {props.user ? (
           <>
-            <Link to="/protected" className="authLink">
-              Protected Page
+            <Link to="/Home" className="authLink">
+              Home Page
+            </Link>
+            <Link to="/Upload" className="authLink">
+              Upload Page
+            </Link>
+            <Link to="/Weekly-Report" className="authLink">
+              Weekly Report
+            </Link>
+            <Link to="/Resources" className="authLink">
+              Resources Page
             </Link>
             <button className="nav-logoutbtn" onClick={props.handleLogout}>
               Logout
@@ -21,6 +30,9 @@ const Navbar = props => {
           </>
         ) : (
           <>
+             <Link to="/" className="nav__projectName">
+        Balance
+      </Link>
             <Link to="/auth/signup" className="authLink">
               Signup
             </Link>
