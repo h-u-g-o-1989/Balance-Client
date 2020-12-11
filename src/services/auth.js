@@ -73,3 +73,13 @@ export function upload(credentials) {
     .then(successStatus)
     .catch(internalServerError);
 }
+export function getDays() {
+  return authService
+    .get("/daily-report", {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    })
+    .then(successStatus)
+    .catch(internalServerError);
+}
