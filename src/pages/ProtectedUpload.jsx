@@ -9,7 +9,7 @@ render () {
   return (
     <div>
       <h1>This is where you upload your weekly data</h1>
-    <DayUpload />
+    <DayUpload history={this.props.history} />
     </div>
   );
 }

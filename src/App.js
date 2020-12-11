@@ -6,7 +6,8 @@ import HomePage from "./pages/HomePage";
 import LogIn from "./pages/LogIn";
 import ProtectedHome from "./pages/ProtectedHome";
 import ProtectedUpload from "./pages/ProtectedUpload";
-import ProtectedWeekly from "./pages/ProtectedWeekly";
+import ProtectedDay from "./pages/ProtectedDay";
+// import ProtectedReports from "./pages/ProtectedReports";
 import ProtectedResources from "./pages/ProtectedResources";
 import Signup from "./pages/Signup";
 import NormalRoute from "./routing-components/NormalRoute";
@@ -31,8 +32,10 @@ class App extends React.Component {
       if (!res.status) {
         console.log("RES IN CASE OF FAILURE", res);
         // deal with failed backend call
+        localStorage.removeItem("accessToken");
         return this.setState({
           isLoading: false,
+          user: null,
         });
       }
       this.setState({
@@ -113,10 +116,16 @@ class App extends React.Component {
           />
           <ProtectedRoute
             exact
-            path={PATHS.PROTECTEDWEEKLY}
-            component={ProtectedWeekly}
+            path={PATHS.PROTECTEDDAY}
+            component={ProtectedDay}
             user={this.state.user}
           />
+          {/* <ProtectedRoute
+            exact
+            path={PATHS.PROTECTEDREPORTS}
+            component={ProtectedReports}
+            user={this.state.user}
+          /> */}
           <ProtectedRoute
             exact
             path={PATHS.PROTECTEDRESOURCES}

@@ -18,8 +18,8 @@ const Navbar = props => {
             <Link to="/Upload" className="authLink">
               Upload Page
             </Link>
-            <Link to="/Weekly-Report" className="authLink">
-              Weekly Report
+            <Link to="/Daily-Report" className="authLink">
+              Daily Report
             </Link>
             <Link to="/Resources" className="authLink">
               Resources Page

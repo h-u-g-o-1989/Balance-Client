@@ -3,5 +3,6 @@ export const SIGNUPPAGE = "/auth/signup";
 export const LOGINPAGE = "/auth/login";
 export const PROTECTEDHOME = "/Home";
 export const PROTECTEDUPLOAD = "/Upload";
-export const PROTECTEDWEEKLY = "/Weekly-Report";
+export const PROTECTEDDAY = "/Daily-Report";
 export const PROTECTEDRESOURCES = "/Resources";
+export const PROTECTEDREPORTS = "/Reports";
