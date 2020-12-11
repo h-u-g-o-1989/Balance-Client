@@ -19,6 +19,7 @@ export default class Signup extends Component {
 
   handleFormSubmission = (event) => {
     event.preventDefault();
+    console.log("Submitting signup form", this.state)
     const credentials = {
       username: this.state.username,
       password: this.state.password,
@@ -26,12 +27,13 @@ export default class Signup extends Component {
     };
     signup(credentials).then((res) => {
       // successful signup
-      console.log(res);
+      console.log("results of signing up!", res);
       if (!res.status) {
         // unsuccessful signup
       }
       localStorage.setItem("accessToken", res.data.accessToken);
       this.props.authenticate(res.data.user);
+      console.log("res data user", res.data.user)
       this.props.history.push("/home");
     });
   };

@@ -1,4 +1,6 @@
 import React from 'react'
+import { upload } from "../../services/auth";
+
 
 class DayUpload extends React.Component {
 
@@ -9,34 +11,45 @@ class DayUpload extends React.Component {
       leisure: 0,
       selfCare: 0, 
       mood: "", 
-      day:0, 
-      week: 0, 
+      day: 1, 
+      month: "January",
+      total: 0, 
   }
-      
+  
+  // handleSum = (event) => {
+  //   const {work, chores, sleep, leisure, selfCare} = event.target;
+  //   this.setState ({
+  //   total: event.target.reduce((total, element) => {
+  //     return total + Number(element)
+  //   })
+  //   })
+  // }
+
+
   handleChange = (event) => {
     console.log(event.target.name, ": ", event.target.value);
     const { name, value } = event.target;
     this.setState({
       [name]: value,
+      total: Number(this.state.chores) + Number(this.state.work) + Number(this.state.sleep) + Number(this.state.leisure) + Number(this.state.selfCare)
     });
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState = {
-      work: this.state.work,
-      chores: this.state.chores,
-      sleep: this.state.sleep,
-      leisure: this.state.leisure,
-      selfCare: this.state.selfCare, 
-      mood: this.state.mood, 
-      day: this.state.day,
-      week: this.state.week,
-    }
-    console.log("updated state",this.state)
+    console.log("Submitting form to backend", this.state)
+    const credentials = this.state
+
+    upload(credentials).then((res) => {
+      console.log(res)
+    
+      this.props.history.push("/home");
+    })
 }
         render() {
-console.log("initial state",this.state)
+// console.log("initial state",this.state)
           return (
+
+
             <form onSubmit={this.handleSubmit}>
               <label>
                 <label htmlFor="work">Work</label>
@@ -157,7 +170,7 @@ console.log("initial state",this.state)
                 <br />
                 <label htmlFor="selfCare">Self-Care</label>
                 <select name="selfCare" value={this.state.selfCare} onChange={this.handleChange}>
-                <option  value="0">0</option>
+                  <option  value="0">0</option>
                   <option  value="1">1</option>
                   <option  value="2">2</option>
                   <option  value="3">3</option>
@@ -195,11 +208,68 @@ console.log("initial state",this.state)
                   <option  value="Stressed">Stressed</option>
                   <option  value="Tired">Tired</option>
                 </select>
+                <br />
+                <label htmlFor="day">Day</label>
+                <select name="day" value={this.state.day} onChange={this.handleChange}>
+                  <option  value="1">1</option>
+                  <option  value="2">2</option>
+                  <option  value="3">3</option>
+                  <option  value="4">4</option>
+                  <option  value="5">5</option>
+                  <option  value="6">6</option>
+                  <option  value="7">7</option>
+                  <option  value="8">8</option>
+                  <option  value="9">9</option>
+                  <option  value="10">10</option>
+                  <option  value="11">11</option>
+                  <option  value="12">12</option>
+                  <option  value="13">13</option>
+                  <option  value="14">14</option>
+                  <option  value="15">15</option>
+                  <option  value="16">16</option>
+                  <option  value="17">17</option>
+                  <option  value="18">18</option>
+                  <option  value="19">19</option>
+                  <option  value="20">20</option>
+                  <option  value="21">21</option>
+                  <option  value="22">22</option>
+                  <option  value="23">23</option>
+                  <option  value="24">24</option>
+                  <option  value="25">25</option>
+                  <option  value="26">26</option>
+                  <option  value="27">27</option>
+                  <option  value="28">28</option>
+                  <option  value="29">29</option>
+                  <option  value="30">30</option>
+                  <option  value="31">31</option>
+                </select>
+                <br />
+                <label htmlFor="month">Month</label>
+                <select name="month" value={this.state.month} onChange={this.handleChange}>
+                  <option  value="January">January</option>
+                  <option  value="February">February</option>
+                  <option  value="March">March</option>
+                  <option  value="April">April</option>
+                  <option  value="May">May</option>
+                  <option  value="June">June</option>
+                  <option  value="July">July</option>
+                  <option  value="August">August</option>
+                  <option  value="September">September</option>
+                  <option  value="October">October</option>
+                  <option  value="November">November</option>
+                  <option  value="December">December</option>
+                </select>
               </label>
               <br />
               
-              <input type="submit" value="Submit" />
+              {/* <input type="submit" value="Submit" /> */}
+
+
+{this.state.total > 24 && (
+  <h1>Too many hours</h1>
+ ) ||  <input type="submit" value="Submit" />}
             </form>
+            
           );
         }
       }

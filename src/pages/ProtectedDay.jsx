@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProtectedWeekly = () => {
+const ProtectedDay = () => {
   return (
     <div>
       <h1>This is where you SEE all your weekly data</h1>
@@ -8,4 +8,4 @@ const ProtectedWeekly = () => {
   );
 };
 
-export default ProtectedWeekly;
+export default ProtectedDay;

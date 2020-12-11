@@ -62,3 +62,14 @@ export function logout() {
     .then(successStatus)
     .catch(internalServerError);
 }
+
+export function upload(credentials) {
+  return authService
+    .post("/upload", credentials, {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    })
+    .then(successStatus)
+    .catch(internalServerError);
+}
