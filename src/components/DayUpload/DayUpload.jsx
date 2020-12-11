@@ -16,24 +16,26 @@ class DayUpload extends React.Component {
       total: 0, 
   }
   
-  // handleSum = (event) => {
-  //   const {work, chores, sleep, leisure, selfCare} = event.target;
-  //   this.setState ({
-  //   total: event.target.reduce((total, element) => {
-  //     return total + Number(element)
-  //   })
-  //   })
-  // }
-
 
   handleChange = (event) => {
+    // console.log(this.state.total)
     console.log(event.target.name, ": ", event.target.value);
     const { name, value } = event.target;
     this.setState({
-      [name]: value,
-      total: Number(this.state.chores) + Number(this.state.work) + Number(this.state.sleep) + Number(this.state.leisure) + Number(this.state.selfCare)
-    });
+      [name]: value
+    })
   };
+
+  /*component did update always needs a conditional to stop it becoming and infinte loop, it would call compnent did update which would render which would call component did update etc etc*/
+  componentDidUpdate = () => {
+    const newTotal = Number(this.state.chores) + Number(this.state.work) + Number(this.state.sleep) + Number(this.state.leisure) + Number(this.state.selfCare)
+    if(this.state.total !== newTotal) {
+      this.setState ({
+        total: newTotal
+      })
+    }
+  }
+
   handleSubmit = (event) => {
     event.preventDefault();
     console.log("Submitting form to backend", this.state)
@@ -42,7 +44,7 @@ class DayUpload extends React.Component {
     upload(credentials).then((res) => {
       console.log(res)
     
-      this.props.history.push("/home");
+      this.props.history.push("/daily-report");
     })
 }
         render() {
@@ -262,12 +264,11 @@ class DayUpload extends React.Component {
               </label>
               <br />
               
-              {/* <input type="submit" value="Submit" /> */}
 
 
-{this.state.total > 24 && (
+{(this.state.total > 24 && (
   <h1>Too many hours</h1>
- ) ||  <input type="submit" value="Submit" />}
+ )) ||  <input type="submit" value="Submit" />}
             </form>
             
           );
