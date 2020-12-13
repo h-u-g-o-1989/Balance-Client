@@ -120,12 +120,6 @@ class App extends React.Component {
             component={ProtectedDay}
             user={this.state.user}
           />
-          {/* <ProtectedRoute
-            exact
-            path={PATHS.PROTECTEDREPORTS}
-            component={ProtectedReports}
-            user={this.state.user}
-          /> */}
           <ProtectedRoute
             exact
             path={PATHS.PROTECTEDRESOURCES}

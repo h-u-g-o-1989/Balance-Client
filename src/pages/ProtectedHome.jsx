@@ -1,12 +1,41 @@
-import React from "react";
+import React, { Component } from 'react'
+import { getDays } from '../services/auth'
+import Chart from "react-google-charts";
 
-const ProtectedHome = () => {
-  return (
-    <div>
-      <h1>This is the protected home page for the user!</h1>
-      <h1> Welcome back username heres your monthly recap</h1>
-    </div>
-  );
-};
 
-export default ProtectedHome;
+class ProtectedHome extends Component {
+  state = {
+    days: [],
+    work: "",
+    sleep: "",
+    leisure: "",
+    selfCare: "", 
+    mood: "",
+    day:"", 
+    month:"", 
+    loading: true, 
+  }
+  componentDidMount = () => {
+    getDays().then(res =>{ 
+      // console.log("COMPONENT-DID-MOUNT", res)
+      this.setState ({days: res.data, loading: false})
+    })
+    }
+
+  render () {
+    console.log("AFTER RENDER",this.state)  
+    const chartData = this.state.days.map((day) => ([ 
+     day.work, day.chores, day.sleep,  day.leisure,  day.selfCare]))
+ 
+  console.log (chartData)
+
+
+    return (
+      <div>
+        
+      </div>
+    )
+  }
+}
+
+export default ProtectedHome
