@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { getDays } from '../services/auth'
 import { Link } from 'react-router-dom';
 import Chart from "react-google-charts";
+import "./protectedDay.css"
+
 
 class ProtectedDay extends Component {
 state = {
@@ -43,13 +45,14 @@ const options = {
 };
 
     return (
-      <div>
+      <div className="all-days">
         <div>
 {this.state.days.map((day, i) => (
-  <div><h1>{day.month}{" "}{day.day}</h1>
+  <div  className="each-day parentDiv"><h1>{day.month}{" "}{day.day}</h1>
     <h2>Mood of the Day: {day.mood}</h2>
      <button>Edit Days Routine</button>  <button>Delete</button> <div className="App">
   <Chart
+   className="each-day"
     chartType="PieChart"
     width="100%"
     height="400px"
