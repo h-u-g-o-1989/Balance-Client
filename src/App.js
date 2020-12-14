@@ -7,11 +7,11 @@ import LogIn from "./pages/LogIn";
 import ProtectedHome from "./pages/ProtectedHome";
 import ProtectedUpload from "./pages/ProtectedUpload";
 import ProtectedDay from "./pages/ProtectedDay";
-// import ProtectedReports from "./pages/ProtectedReports";
 import ProtectedResources from "./pages/ProtectedResources";
 import Signup from "./pages/Signup";
 import NormalRoute from "./routing-components/NormalRoute";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
+import Edit from "./pages/Edit";
 import { getLoggedIn, logout } from "./services/auth";
 import * as PATHS from "./utils/paths";
 
@@ -124,6 +124,12 @@ class App extends React.Component {
             exact
             path={PATHS.PROTECTEDRESOURCES}
             component={ProtectedResources}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.EDIT}
+            component={Edit}
             user={this.state.user}
           />
         </Switch>

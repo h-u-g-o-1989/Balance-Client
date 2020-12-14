@@ -23,6 +23,7 @@ function successStatus(res) {
 }
 
 // creates a basic url for every request in this file
+// REMEMBER TO CHANGE IT TO baseURL: `${process.env.REACT_APP_SERVER_URL}/auth` WHEN GOING LIVE
 const authService = axios.create({
   baseURL: `http://localhost:5005/api/auth`,
 });
@@ -82,4 +83,41 @@ export function getDays() {
     })
     .then(successStatus)
     .catch(internalServerError);
+}
+
+export function updateSingleDay(id, info) {
+  return authService
+    .put(`/${id}`, info, {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    })
+    .then((response) => {
+      return {
+        status: true,
+        data: response.data,
+      };
+    })
+    .catch((err) => {
+      console.log(err.response);
+      return {
+        status: false,
+        errorMessage: err.response.data.errorMessage,
+      };
+    });
+}
+
+export function getSingleDay(id) {
+  return authService
+    .get(`/${id}`)
+    .then((dayBack) => {
+      console.log("Data from axios", dayBack);
+      return dayBack.data;
+    })
+    .catch((err) => {
+      console.log(err.response);
+      return {
+        errorMessage: err.response.data.errorMessage,
+      };
+    });
 }
