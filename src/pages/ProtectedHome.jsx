@@ -17,7 +17,7 @@ class ProtectedHome extends Component {
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     const eachDayWork = this.state.days.map((day) => day.work);
     const eachDaySleep = this.state.days.map((day) => day.sleep);
     const eachDayChores = this.state.days.map((day) => day.chores);
@@ -32,16 +32,16 @@ class ProtectedHome extends Component {
     const totalLeisure = [...eachDayLeisure].reduce((a, b) => a + b, 0);
     const totalSelfCare = [...eachDaySelfCare].reduce((a, b) => a + b, 0);
     const numberOfDays = eachDay.length;
-    console.log("No Of DAYS", numberOfDays);
+    // console.log("No Of DAYS", numberOfDays);
     const totalHours = numberOfDays * 24;
     // console.log(totalHours)
 
     let tooMuchWork = Math.round((totalWork / totalHours) * 100);
 
-    console.log(tooMuchWork);
+    // console.log(tooMuchWork);
 
     const eachMood = this.state.days.map((day) => day.mood);
-    console.log("MOOD", eachMood);
+    // console.log("MOOD", eachMood);
 
     const arr = [...eachMood];
     function findMostFrequent(arr) {

@@ -111,11 +111,31 @@ export function getSingleDay(id) {
   return authService
     .get(`/${id}`)
     .then((dayBack) => {
-      console.log("Data from axios", dayBack);
+      // console.log("Data from axios", dayBack);
       return dayBack.data;
     })
     .catch((err) => {
       console.log(err.response);
+      return {
+        errorMessage: err.response.data.errorMessage,
+      };
+    });
+}
+
+export function getDayAndDelete(id) {
+  console.log(id);
+  return authService
+    .delete(`delete/${id}`, {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    })
+    .then((dayToDelete) => {
+      // return dayToDelete.data;
+      return dayToDelete;
+    })
+    .catch((err) => {
+      console.log("ërrre , ", err.response);
       return {
         errorMessage: err.response.data.errorMessage,
       };

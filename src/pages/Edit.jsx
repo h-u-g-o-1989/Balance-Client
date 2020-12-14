@@ -1,17 +1,29 @@
 import React from "react";
 // import axios from "axios";
 import DayUpload from "../components/DayUpload/DayUpload";
-import { updateSingleDay, getSingleDay } from "../services/auth";
+import {
+  updateSingleDay,
+  getSingleDay,
+  getDayAndDelete,
+} from "../services/auth";
+
+const hoursOptions = new Array(25).fill(1).map((_, i) => i);
+const monthsOptions = new Array(31).fill(1).map((_, i) => i + 1);
+
+// Extra sprinkle to limit nº of hours you can see. Doesn't work.
+// const getHoursLeft = (counter) =>
+//   new Array(25 - counter).fill(1).map((_, i) => i);
 
 class Edit extends React.Component {
   state = {
     dayInfo: null,
+    total: 0,
   };
 
   componentDidMount = () => {
-    console.log(this.props.match);
+    // console.log(this.props.match);
     getSingleDay(this.props.match.params.id).then((dayInfo) => {
-      console.log("Component did mount correctly", dayInfo);
+      // console.log("Component did mount correctly", dayInfo);
       this.setState({
         dayInfo,
       });
@@ -23,6 +35,7 @@ class Edit extends React.Component {
     const { name, value } = event.target;
     this.setState({
       dayInfo: {
+        ...this.state.dayInfo,
         [name]: value,
       },
     });
@@ -41,13 +54,33 @@ class Edit extends React.Component {
     );
   };
 
+  handleDelete = (event) => {
+    event.preventDefault();
+    // console.log("this.props.match.params.id", this.props.match.params.id);
+    getDayAndDelete(this.props.match.params.id).then((res) => {
+      // console.log("RES: ", res);
+      if (!res.status) {
+        return;
+      }
+      this.props.history.push("/daily-report");
+    });
+  };
+
   render() {
     if (!this.state.dayInfo) {
       return <div>Loading...</div>;
     }
-    console.log("Dayinfo", this.state.dayInfo.work);
+    const counterOfHours =
+      +this.state.dayInfo.work +
+      +this.state.dayInfo.sleep +
+      +this.state.dayInfo.chores +
+      +this.state.dayInfo.leisure +
+      +this.state.dayInfo.selfCare;
+    // console.log(counterOfHours);
+    // console.log("Dayinfo", this.state.dayInfo);
     return (
       <div>
+        <h1>{counterOfHours} h scheduled</h1>
         <form onSubmit={this.handleSubmit}>
           <label>
             <label htmlFor="work">Work</label>
@@ -56,31 +89,9 @@ class Edit extends React.Component {
               value={this.state.dayInfo.work}
               onChange={this.handleChange}
             >
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-              <option value="22">22</option>
-              <option value="23">23</option>
-              <option value="24">24</option>
+              {hoursOptions.map((el) => (
+                <option value={el}>{el}</option>
+              ))}
             </select>
             <br />
             <label htmlFor="sleep">Sleep</label>
@@ -89,31 +100,9 @@ class Edit extends React.Component {
               value={this.state.dayInfo.sleep}
               onChange={this.handleChange}
             >
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-              <option value="22">22</option>
-              <option value="23">23</option>
-              <option value="24">24</option>
+              {hoursOptions.map((el) => (
+                <option value={el}>{el}</option>
+              ))}
             </select>
             <br />
             <label htmlFor="chores">Chores</label>
@@ -122,31 +111,9 @@ class Edit extends React.Component {
               value={this.state.dayInfo.chores}
               onChange={this.handleChange}
             >
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-              <option value="22">22</option>
-              <option value="23">23</option>
-              <option value="24">24</option>
+              {hoursOptions.map((el) => (
+                <option value={el}>{el}</option>
+              ))}
             </select>
             <br />
             <label htmlFor="leisure">Leisure</label>
@@ -155,31 +122,9 @@ class Edit extends React.Component {
               value={this.state.dayInfo.leisure}
               onChange={this.handleChange}
             >
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-              <option value="22">22</option>
-              <option value="23">23</option>
-              <option value="24">24</option>
+              {hoursOptions.map((el) => (
+                <option value={el}>{el}</option>
+              ))}
             </select>
             <br />
             <label htmlFor="selfCare">Self-Care</label>
@@ -188,31 +133,9 @@ class Edit extends React.Component {
               value={this.state.dayInfo.selfCare}
               onChange={this.handleChange}
             >
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-              <option value="22">22</option>
-              <option value="23">23</option>
-              <option value="24">24</option>
+              {hoursOptions.map((el) => (
+                <option value={el}>{el}</option>
+              ))}
             </select>
             <br />
             <label htmlFor="mood">Mood of the Day</label>
@@ -237,37 +160,9 @@ class Edit extends React.Component {
               value={this.state.dayInfo.day}
               onChange={this.handleChange}
             >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-              <option value="22">22</option>
-              <option value="23">23</option>
-              <option value="24">24</option>
-              <option value="25">25</option>
-              <option value="26">26</option>
-              <option value="27">27</option>
-              <option value="28">28</option>
-              <option value="29">29</option>
-              <option value="30">30</option>
-              <option value="31">31</option>
+              {monthsOptions.map((el) => (
+                <option value={el}>{el}</option>
+              ))}
             </select>
             <br />
             <label htmlFor="month">Month</label>
@@ -291,10 +186,15 @@ class Edit extends React.Component {
             </select>
           </label>
           <br />
-          {(this.state.total > 24 && <h1>Too many hours</h1>) || (
-            <input type="submit" value="Submit" />
-          )}{" "}
-          <button onClick={this.handleSubmit}>Delete this data</button>
+          {counterOfHours > 24 ? (
+            <h1>Too many hours</h1>
+          ) : counterOfHours < 24 ? (
+            <h3>Please make sure the total adds up to 24h.</h3>
+          ) : (
+            <button type="¨submit">Submit</button>
+          )}
+
+          <button onClick={this.handleDelete}>Delete this data</button>
         </form>
       </div>
     );
