@@ -86,7 +86,7 @@ class ProtectedDay extends Component {
                     margin: "0 auto",
                   }}
                 >
-                  {/* if mood is negative and sleep is less than 7 */}
+                  {/* CONDITIONALS */}
                   {(day.work > 8 &&
                     day.sleep < 7 &&
                     ["Sad", "Stressed", "Angry", "Tired"].includes(

@@ -1,6 +1,4 @@
 import React from "react";
-// import axios from "axios";
-import DayUpload from "../components/DayUpload/DayUpload";
 import {
   updateSingleDay,
   getSingleDay,
