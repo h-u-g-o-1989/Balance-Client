@@ -2,35 +2,99 @@ import React, { Component } from "react";
 import { getDays } from "../services/auth";
 import Chart from "react-google-charts";
 import { Link } from "react-router-dom";
+import MonthComponent from "../components/monthComponent/MonthComponent";
 
 class ProtectedMonthly extends Component {
   state = {
     days: [],
-    months: null,
     loading: true,
+    monthsFilled: [],
+    uniqueMonths: {},
   };
 
   componentDidMount = () => {
-      let days;
+    let days;
 
     getDays().then((res) => {
-      days = res.data 
+      console.log(res.data);
+      const monthsFilled = [...new Set(res.data.map((el) => el.month))];
+      const uniqueMonths = res.data.reduce((acc, val) => {
+        if (acc[val.month]) {
+          return { ...acc, [val.month]: [...acc[val.month], val] };
+        }
+        return { ...acc, [val.month]: [val] };
+      }, {});
+      // acc-> {}
+      // val -> "sad march day 1"
+
+      // does acc.march exist? do something : move awy
+      // returning {March: [sad march day 1]}
+
+      // second loop
+      //acc ->   {March: [sad march day 1]}
+      //val -> "calm february  day 2"
+
+      // does acc.february exist? do something: move away
+      // {March: [sad march day 1], Febcraury: [calm february day 2]}
+
+      // third loop
+      // acc -> {March: [sad march day 1], Febcraury: [calm february day 2]}
+      // val -> febcruary happy day 1
+
+      //does acc.februrary exist?
+      // {March: [sad march day 1], February: [calm februray day 2,febraury happy day 1 ]}
+      console.log(uniqueMonths);
+      days = res.data;
+      this.setState({ days: days, loading: false, monthsFilled, uniqueMonths });
     });
-
-    let months = 
-
-   this.setState({ days: res.data, months: ,loading: false });
   };
 
   render() {
     // AGGREGATED RESULTS
+    console.log("-------- start of MAGIC SHOW -----");
+    const { uniqueMonths } = this.state;
+    // console.log(uniqueMonths);
+    const january = uniqueMonths.January;
+    // console.log("NO SEPTMEBER, BUT JANARY", january);
+    function reducer(arr) {
+      return arr.reduce((acc, val) => {
+        console.log(acc, val);
+        return {
+          work: acc.work + val.work,
+          sleep: acc.sleep + val.sleep,
+          chores: acc.chores + val.chores,
+          leisure: acc.leisure + val.leisure,
+          selfCare: acc.selfCare + val.selfCare,
+        };
+      });
+    }
+
+    const uniqueMonthsArray = Object.entries(uniqueMonths);
+    const generalized =
+      uniqueMonthsArray.length &&
+      uniqueMonthsArray.reduce((acc, val) => {
+        const sum = val[1].reduce((prev, cur) => {
+          return {
+            work: prev.work + cur.work,
+            sleep: prev.sleep + cur.sleep,
+            chores: prev.chores + cur.chores,
+            leisure: prev.leisure + cur.leisure,
+            selfCare: prev.selfCare + cur.selfCare,
+            month: cur.month,
+          };
+        });
+
+        return { ...acc, [val[0]]: sum };
+      }, {});
+    console.log("GENERALI~ED", generalized);
+    console.log("------- end of MAGIC SHOW ----");
     const allDays = this.state.days.map((day) => day);
     const monthlyUpdate = [...allDays];
 
     // Jan
-    const filteredMonth = (month) =>
-      monthlyUpdate.filter((day) => day.month === month);
-
+    // const filteredMonth = (month) =>
+    //   monthlyUpdate.filter((day) => day.month === month);
+    /* 
     const filteredJanuary = monthlyUpdate.filter(
       (day) => day.month === `January`
     );
@@ -39,6 +103,15 @@ class ProtectedMonthly extends Component {
     //   const filteredFebruary = monthlyUpdate.filter(
     //     (day) => day.month === `February`
     //   );
+
+    function filterVals(arr, key) {
+      return arr.map((el) => el[key]).reduce((a, bv) => a + bv, 0);
+    }
+
+    console.log(
+      "new Total Work in One func",
+      filterVals(filteredJanuary, "work")
+    );
 
     const eachDayWork = filteredJanuary.map((day) => day.work);
     const eachDaySleep = filteredJanuary.map((day) => day.sleep);
@@ -107,126 +180,14 @@ class ProtectedMonthly extends Component {
       title: "My Daily Activities",
       pieHole: 0.4,
       is3D: false,
-    };
+    }; */
 
     return (
-      <div>
-        <h1>
-          During the month of January (a total of {totalHours} hours ), this is
-          how you have balanced your life,
-        </h1>
-        <h2>Total time spent working: {totalWork} hours</h2>
-        <h2>Total time spent sleeping: {totalSleep} hours</h2>
-        <h2>Total time spent doing Chores: {totalChores} hours</h2>
-        <h2>Total time spent on leisure: {totalLeisure} hours</h2>
-        <h2>Total time spent on self care: {totalSelfCare} hours</h2>
-        <h2>
-          The most common emotional state of mind at the end of the day was:
-          <b> {emotionalState} </b>
-        </h2>
-        <Chart
-          chartType="PieChart"
-          width="100%"
-          height="400px"
-          data={data}
-          options={options}
-        />
-        <div
-          style={{
-            backgroundColor: "red",
-            width: "50%",
-            display: "flex",
-            justifyContent: "center",
-            margin: "0 auto",
-          }}
-        >
-          {(tooMuchWork > 30 &&
-            ["Sad", "Stressed", "Angry", "Tired"].includes(emotionalState) && (
-              <div>
-                <p>ALL WORK AND NO PLAY .</p>
-                <Link
-                  to="/Resources"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <p style={{ backgroundColor: "green" }}>
-                    Here are some suggestions at how to improve your balance.
-                  </p>
-                </Link>
-              </div>
-            )) ||
-            (tooLittleSleep < 30 &&
-              ["Sad", "Stressed", "Angry", "Tired"].includes(
-                emotionalState
-              ) && (
-                <div>
-                  <p>You seem to be lacking some hours of sleep.</p>
-                  <Link
-                    to="/Resources"
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <p style={{ backgroundColor: "green" }}>
-                      Here are some suggestions at how to improve your balance.
-                    </p>
-                  </Link>
-                </div>
-              )) ||
-            (tooManyChores > 15 &&
-              ["Sad", "Stressed", "Angry", "Tired"].includes(
-                emotionalState
-              ) && (
-                <div>
-                  <p>Too many chores seem to be affecting your mood.</p>
-                  <Link
-                    to="/Resources"
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <p style={{ backgroundColor: "green" }}>
-                      Here are some suggestions at how to improve your balance.
-                    </p>
-                  </Link>
-                </div>
-              )) ||
-            (tooLittleLeisure < 15 &&
-              ["Sad", "Stressed", "Angry", "Tired"].includes(
-                emotionalState
-              ) && (
-                <div>
-                  <p>Not enough leisure seem to be affecting your mood.</p>
-                  <Link
-                    to="/Resources"
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <p style={{ backgroundColor: "green" }}>
-                      Here are some suggestions at how to improve your balance.
-                    </p>
-                  </Link>
-                </div>
-              )) ||
-            (tooLittleSelfCare < 15 &&
-              ["Sad", "Stressed", "Angry", "Tired"].includes(
-                emotionalState
-              ) && (
-                <div>
-                  <p>Not enough self-care seem to be affecting your mood.</p>
-                  <Link
-                    to="/Resources"
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <p style={{ backgroundColor: "green" }}>
-                      Here are some suggestions at how to improve your balance.
-                    </p>
-                  </Link>
-                </div>
-              )) || (
-              <div>
-                <p>
-                  You seem to have a pretty good work-life balance, congrats!
-                </p>
-              </div>
-            )}
-          <div />
-        </div>
-      </div>
+      <>
+        {uniqueMonthsArray.map((el) => (
+          <MonthComponent month={el[0]} />
+        ))}
+      </>
     );
   }
 }
