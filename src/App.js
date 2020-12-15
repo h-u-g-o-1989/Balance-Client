@@ -7,7 +7,9 @@ import LogIn from "./pages/LogIn";
 import ProtectedHome from "./pages/ProtectedHome";
 import ProtectedUpload from "./pages/ProtectedUpload";
 import ProtectedDay from "./pages/ProtectedDay";
+import ProtectedMonthly from "./pages/ProtectedMonthly";
 import ProtectedResources from "./pages/ProtectedResources";
+import ProtectedAbout from "./pages/ProtectedAbout";
 import Signup from "./pages/Signup";
 import NormalRoute from "./routing-components/NormalRoute";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
@@ -122,8 +124,20 @@ class App extends React.Component {
           />
           <ProtectedRoute
             exact
+            path={PATHS.PROTECTEDMONTHLY}
+            component={ProtectedMonthly}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
             path={PATHS.PROTECTEDRESOURCES}
             component={ProtectedResources}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.PROTECTEDABOUT}
+            component={ProtectedAbout}
             user={this.state.user}
           />
           <ProtectedRoute

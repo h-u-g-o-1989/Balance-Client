@@ -57,7 +57,7 @@ class ProtectedDay extends Component {
       <div className="all-days">
         <div>
           {this.state.days.map((day, i) => (
-            <div className="each-day parentDiv" key="i">
+            <div className="each-day parentDiv" key={day._id}>
               <h1>
                 {day.month} {day.day}
               </h1>
