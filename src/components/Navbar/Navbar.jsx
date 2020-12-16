@@ -5,30 +5,28 @@ import "./Navbar.css";
 const Navbar = (props) => {
   return (
     <nav>
-      {/* <Link to="/" className="nav__projectName">
-        Balance
-      </Link> */}
+      <img src="./balanceLogo-white.png" alt="" />
 
       <div className="nav__authLinks">
         {props.user ? (
           <>
-            <Link to="/Home" className="authLink">
-              Home Page
+            <Link to="/home" className="authLink">
+              Home
             </Link>
-            <Link to="/Upload" className="authLink">
-              Upload Page
+            <Link to="/upload" className="authLink">
+              Upload
             </Link>
-            <Link to="/Daily-Report" className="authLink">
+            <Link to="/daily-report" className="authLink">
               Daily Report
             </Link>
-            <Link to="/Monthly-Report" className="authLink">
+            <Link to="/monthly-report" className="authLink">
               Monthly Report
             </Link>
-            <Link to="/Resources" className="authLink">
-              Resources Page
+            <Link to="/resources" className="authLink">
+              Resources
             </Link>
-            <Link to="/About" className="authLink">
-              About us
+            <Link to="/about" className="authLink">
+              Contact
             </Link>
             <button className="nav-logoutbtn" onClick={props.handleLogout}>
               Logout
@@ -36,7 +34,7 @@ const Navbar = (props) => {
           </>
         ) : (
           <>
-            <Link to="/" className="nav__projectName">
+            <Link to="/" className="nav__projectName authLink">
               Balance
             </Link>
             <Link to="/auth/signup" className="authLink">

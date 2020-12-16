@@ -6,5 +6,5 @@ export const PROTECTEDUPLOAD = "/Upload";
 export const PROTECTEDDAY = "/Daily-Report";
 export const PROTECTEDMONTHLY = "/Monthly-Report";
 export const PROTECTEDRESOURCES = "/Resources";
-export const PROTECTEDABOUT = "/About";
+export const PROTECTEDABOUT = "/about";
 export const EDIT = "/edit/:id";

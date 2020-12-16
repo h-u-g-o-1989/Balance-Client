@@ -141,3 +141,18 @@ export function getDayAndDelete(id) {
       };
     });
 }
+export function deleteAccount() {
+  return authService
+    .delete(`account`, {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    })
+    .then((res) => res.data)
+    .catch((err) => {
+      console.log("ërrre , ", err.response);
+      return {
+        errorMessage: err.response.data.errorMessage,
+      };
+    });
+}

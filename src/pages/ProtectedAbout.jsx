@@ -1,18 +1,36 @@
 import React, { Component } from "react";
+import { deleteAccount } from "../services/auth";
 
 export default class ProtectedAbout extends Component {
+  deleteAccount = () => {
+    deleteAccount().then((data) => this.props.authenticate(null));
+  };
+
   render() {
     return (
       <div>
         <div>
           <h1>About us</h1>
           <p>
-            Balance is a ... Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-            dolor in reprehenderit in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur.
+            Balance is an app designed to help you find your work-life balance,
+            offering you useful resources to help ease the struggles of modern
+            life. Created in December 2020 by Hugo Embleton-Black and Marta
+            Sastre Haro, balance was built using the full MERN stack (MongoDB,
+            Express, React & Node). The source code may be found here for the{" "}
+            <a
+              href="https://github.com/h-u-g-o-1989/Balance-Client"
+              target="_blank"
+            >
+              Front-End
+            </a>{" "}
+            and here for the{" "}
+            <a
+              href="https://github.com/h-u-g-o-1989/Balance-server"
+              target="_blank"
+            >
+              Back-End
+            </a>
+            .
           </p>
         </div>
 
@@ -34,7 +52,7 @@ export default class ProtectedAbout extends Component {
             always delete your account (this action is permanent so proceed with
             caution).
           </p>
-          <button>Delete your account</button>
+          <button onClick={this.deleteAccount}>Delete your account</button>
         </div>
       </div>
     );

@@ -19,11 +19,11 @@ export default class Signup extends Component {
 
   handleFormSubmission = (event) => {
     event.preventDefault();
-    console.log("Submitting signup form", this.state)
+    console.log("Submitting signup form", this.state);
     const credentials = {
       username: this.state.username,
       password: this.state.password,
-      email: this.state.email
+      email: this.state.email,
     };
     signup(credentials).then((res) => {
       // successful signup
@@ -33,14 +33,14 @@ export default class Signup extends Component {
       }
       localStorage.setItem("accessToken", res.data.accessToken);
       this.props.authenticate(res.data.user);
-      console.log("res data user", res.data.user)
+      console.log("res data user", res.data.user);
       this.props.history.push("/home");
     });
   };
 
   render() {
     return (
-      <div>
+      <div className="authForm">
         <h1>Sign Up</h1>
         <form onSubmit={this.handleFormSubmission} className="auth__form">
           <label htmlFor="input-username">Username</label>
@@ -53,7 +53,7 @@ export default class Signup extends Component {
             onChange={this.handleInputChange}
             required
           />
-           <label htmlFor="input-email">Email</label>
+          <label htmlFor="input-email">Email</label>
           <input
             id="input-email"
             type="text"

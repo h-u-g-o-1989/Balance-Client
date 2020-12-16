@@ -1,0 +1,61 @@
+.monthlyPages {
+  overflow: hidden;
+}
+
+.eachMonthCard {
+  border: 2px solid lightgrey;
+  box-shadow: 0 0 5px 0 darkgrey;
+  border-radius: 15px;
+  margin: 5em;
+}
+.eachMonthCardHome {
+  border: 2px solid lightgrey;
+  box-shadow: 0 0 5px 0 darkgrey;
+  border-radius: 15px;
+  margin: 4em;
+  overflow: hidden;
+}
+.months {
+  color: #3bba9c;
+  font-weight: 600;
+}
+
+.heading {
+  /* border: 2px solid blue; */
+  font-size: 14px;
+}
+
+.wrapper {
+  justify-content: center;
+  flex-direction: row;
+  height: auto;
+  /* border: 4px solid yellow; */
+}
+.monthlyChart {
+  /* border: 2px solid orange; */
+  width: 50%;
+  /* height: 100%; */
+}
+
+.infoAndMessage {
+  /* border: 2px solid green; */
+  width: 30%;
+  text-align: left;
+  /* height: 100%; */
+}
+.chart {
+  /* border: 2px solid black; */
+  /* height: 400px; */
+}
+.conditionalStatements h3 {
+  color: #3bba9c;
+  border-bottom: 1px solid #3bba9c;
+  padding-bottom: 2px;
+  width: 120px;
+}
+.quote {
+  color: #3bba9c;
+  font-style: italic;
+  text-align: right;
+  margin-right: 6em;
+}

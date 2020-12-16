@@ -2,6 +2,7 @@ import React from "react";
 import { Switch } from "react-router-dom";
 import LoadingComponent from "./components/Loading";
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage";
 import LogIn from "./pages/LogIn";
 import ProtectedHome from "./pages/ProtectedHome";
@@ -137,6 +138,7 @@ class App extends React.Component {
           <ProtectedRoute
             exact
             path={PATHS.PROTECTEDABOUT}
+            authenticate={this.authenticate}
             component={ProtectedAbout}
             user={this.state.user}
           />
@@ -147,6 +149,7 @@ class App extends React.Component {
             user={this.state.user}
           />
         </Switch>
+        <Footer />
       </div>
     );
   }

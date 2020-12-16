@@ -1,0 +1,25 @@
+footer {
+  background-color: #3bba9c;
+  display: flex;
+  position: fixed;
+  margin-bottom: 0;
+  left: 0;
+  bottom: 0px;
+  height: 5em;
+  width: 100%;
+  justify-content: center;
+}
+footer,
+.push {
+  height: 5em;
+}
+footer img {
+  margin-top: 1px;
+}
+.copyright {
+  position: absolute;
+  text-align: right;
+  right: 50px;
+  color: white;
+  margin-top: 8px;
+}

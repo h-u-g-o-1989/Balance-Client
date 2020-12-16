@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getDays } from "../services/auth";
 import MonthComponent from "../components/monthComponent/MonthComponent";
+import "./ProtectedMonthly.css";
 
 class ProtectedMonthly extends Component {
   state = {
@@ -68,9 +69,14 @@ class ProtectedMonthly extends Component {
 
     return (
       <>
-        {uniqueMonthsArray.map((el) => (
-          <MonthComponent month={el[0]} data={el[1]} />
-        ))}
+        <div className="monthlyPages">
+          {uniqueMonthsArray.map((el) => (
+            <div className="monthCard">
+              {" "}
+              <MonthComponent month={el[0]} data={el[1]} />{" "}
+            </div>
+          ))}
+        </div>
       </>
     );
   }

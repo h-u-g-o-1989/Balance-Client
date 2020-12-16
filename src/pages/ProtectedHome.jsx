@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getDays } from "../services/auth";
 import Chart from "react-google-charts";
 import { Link } from "react-router-dom";
+import "./ProtectedMonthly.css";
 
 class ProtectedHome extends Component {
   state = {
@@ -81,158 +82,200 @@ class ProtectedHome extends Component {
     ];
     const options = {
       title: "My Daily Activities",
-      pieHole: 0.4,
-      is3D: false,
+      pieHole: 0.8,
+      is3D: true,
     };
 
     return (
-      <div>
-        <h1>
-          Over the last {numberOfDays} days (a total of {totalHours} hours ),
-          this is how you have balanced your life,
-        </h1>
-        <h2>Total time spent working: {totalWork} hours</h2>
-        <h2>Total time spent sleeping: {totalSleep} hours</h2>
-        <h2>Total time spent doing Chores: {totalChores} hours</h2>
-        <h2>Total time spent on leisure: {totalLeisure} hours</h2>
-        <h2>Total time spent on self care: {totalSelfCare} hours</h2>
-        <h2>
-          The most common emotional state of mind at the end of the day was:
-          <b> {emotionalState} </b>
-        </h2>
-        <Chart
-          chartType="PieChart"
-          width="100%"
-          height="400px"
-          data={data}
-          options={options}
-        />
-        <div
-          style={{
-            backgroundColor: "red",
-            width: "50%",
-            display: "flex",
-            justifyContent: "center",
-            margin: "0 auto",
-          }}
-        >
-          {/* CONDITIONALS */}
-          {(tooMuchWork > 33 &&
-            ["Sad", "Stressed", "Angry", "Tired"].includes(emotionalState) && (
-              <div>
-                <p>Overworking may be affecting your mood.</p>
-                <Link
-                  to="/Resources"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <p style={{ backgroundColor: "green" }}>
-                    Here are some suggestions at how to improve your balance.
-                  </p>
-                </Link>
+      <>
+        <div className="eachMonthCardHome">
+          <div className="heading">
+            <h2>
+              Over the last {numberOfDays} days (a total of {totalHours} hours
+              ), this is how you have balanced your life,
+            </h2>
+          </div>
+
+          <section className="wrapper">
+            <div className="monthlyChart">
+              <Chart
+                chartType="PieChart"
+                width="100%"
+                height="400px"
+                data={data}
+                options={options}
+              />
+            </div>
+
+            <div className="infoAndMessage">
+              <p>
+                {" "}
+                • Total time spent <b>working</b>: {totalWork} hours
+              </p>
+              <p>
+                {" "}
+                • Total time spent <b>sleeping</b>: {totalSleep} hours
+              </p>
+              <p>
+                {" "}
+                • Total time spent doing <b>chores</b>: {totalChores} hours
+              </p>
+              <p>
+                {" "}
+                • Total time spent on <b>leisure</b>: {totalLeisure} hours
+              </p>
+              <p>
+                {" "}
+                • Total time spent on <b>self care</b>: {totalSelfCare} hours
+              </p>
+              <p>
+                {" "}
+                • The most common <b>emotional state</b> of mind at the end of
+                the day was:
+                <b> {emotionalState} </b>
+              </p>
+
+              <div className="conditionalStatements">
+                <h3>balance tips</h3>
+                {/* CONDITIONALS */}
+                {(tooMuchWork > 33 &&
+                  ["Sad", "Stressed", "Angry", "Tired"].includes(
+                    emotionalState
+                  ) && (
+                    <div>
+                      <p>Overworking may be affecting your mood.</p>
+                      <Link
+                        to="/Resources"
+                        style={{ textDecoration: "none", color: "black" }}
+                      >
+                        <p style={{ backgroundColor: "green" }}>
+                          Here are some suggestions at how to improve your
+                          balance.
+                        </p>
+                      </Link>
+                    </div>
+                  )) ||
+                  (tooLittleSleep < 30 &&
+                    ["Sad", "Stressed", "Angry", "Tired"].includes(
+                      emotionalState
+                    ) && (
+                      <div>
+                        <p>You seem to be lacking some hours of sleep.</p>
+                        <Link
+                          to="/Resources"
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          <p style={{ backgroundColor: "green" }}>
+                            Here are some suggestions at how to improve your
+                            balance.
+                          </p>
+                        </Link>
+                      </div>
+                    )) ||
+                  (tooManyChores > 15 &&
+                    ["Sad", "Stressed", "Angry", "Tired"].includes(
+                      emotionalState
+                    ) && (
+                      <div>
+                        <p>Too many chores seem to be affecting your mood.</p>
+                        <Link
+                          to="/Resources"
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          <p style={{ backgroundColor: "green" }}>
+                            Here are some suggestions at how to improve your
+                            balance.
+                          </p>
+                        </Link>
+                      </div>
+                    )) ||
+                  (tooLittleLeisure < 15 &&
+                    ["Sad", "Stressed", "Angry", "Tired"].includes(
+                      emotionalState
+                    ) && (
+                      <div>
+                        <p>
+                          Not enough leisure seem to be affecting your mood.
+                        </p>
+                        <Link
+                          to="/Resources"
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          <p style={{ backgroundColor: "green" }}>
+                            Here are some suggestions at how to improve your
+                            balance.
+                          </p>
+                        </Link>
+                      </div>
+                    )) ||
+                  (tooLittleSelfCare < 15 &&
+                    ["Sad", "Stressed", "Angry", "Tired"].includes(
+                      emotionalState
+                    ) && (
+                      <div>
+                        <p>
+                          Not enough self-care seem to be affecting your mood.
+                        </p>
+                        <Link
+                          to="/Resources"
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          <p style={{ backgroundColor: "green" }}>
+                            Here are some suggestions at how to improve your
+                            balance.
+                          </p>
+                        </Link>
+                      </div>
+                    )) ||
+                  (totalSleep + totalLeisure + totalSelfCare >
+                    totalWork + totalChores &&
+                    ["Calm", "Excited", "Happy"].includes(emotionalState) && (
+                      <div>
+                        <p>
+                          You seem to have a pretty good work-life balance,
+                          congrats!
+                        </p>
+                      </div>
+                    )) ||
+                  (totalSleep + totalLeisure + totalSelfCare <
+                    totalWork + totalChores &&
+                    ["Calm", "Excited", "Happy"].includes(emotionalState) && (
+                      <div>
+                        <p>
+                          It seems work and chores may be taking over your
+                          work-life balance.
+                        </p>
+                        <Link
+                          to="/Resources"
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          <p style={{ backgroundColor: "green" }}>
+                            Feel free to check our resources to find out ways in
+                            which you could improve this.
+                          </p>
+                        </Link>
+                      </div>
+                    )) ||
+                  (totalSleep + totalLeisure + totalSelfCare ===
+                    totalWork + totalChores && (
+                    <div>
+                      <p>
+                        You seem to have a pretty good work-life balance,
+                        congrats!
+                      </p>
+                    </div>
+                  )) || <div />}
               </div>
-            )) ||
-            (tooLittleSleep < 30 &&
-              ["Sad", "Stressed", "Angry", "Tired"].includes(
-                emotionalState
-              ) && (
-                <div>
-                  <p>You seem to be lacking some hours of sleep.</p>
-                  <Link
-                    to="/Resources"
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <p style={{ backgroundColor: "green" }}>
-                      Here are some suggestions at how to improve your balance.
-                    </p>
-                  </Link>
-                </div>
-              )) ||
-            (tooManyChores > 15 &&
-              ["Sad", "Stressed", "Angry", "Tired"].includes(
-                emotionalState
-              ) && (
-                <div>
-                  <p>Too many chores seem to be affecting your mood.</p>
-                  <Link
-                    to="/Resources"
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <p style={{ backgroundColor: "green" }}>
-                      Here are some suggestions at how to improve your balance.
-                    </p>
-                  </Link>
-                </div>
-              )) ||
-            (tooLittleLeisure < 15 &&
-              ["Sad", "Stressed", "Angry", "Tired"].includes(
-                emotionalState
-              ) && (
-                <div>
-                  <p>Not enough leisure seem to be affecting your mood.</p>
-                  <Link
-                    to="/Resources"
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <p style={{ backgroundColor: "green" }}>
-                      Here are some suggestions at how to improve your balance.
-                    </p>
-                  </Link>
-                </div>
-              )) ||
-            (tooLittleSelfCare < 15 &&
-              ["Sad", "Stressed", "Angry", "Tired"].includes(
-                emotionalState
-              ) && (
-                <div>
-                  <p>Not enough self-care seem to be affecting your mood.</p>
-                  <Link
-                    to="/Resources"
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <p style={{ backgroundColor: "green" }}>
-                      Here are some suggestions at how to improve your balance.
-                    </p>
-                  </Link>
-                </div>
-              )) ||
-            (totalSleep + totalLeisure + totalSelfCare >
-              totalWork + totalChores &&
-              ["Calm", "Excited", "Happy"].includes(emotionalState) && (
-                <div>
-                  <p>
-                    You seem to have a pretty good work-life balance, congrats!
-                  </p>
-                </div>
-              )) ||
-            (totalSleep + totalLeisure + totalSelfCare <
-              totalWork + totalChores &&
-              ["Calm", "Excited", "Happy"].includes(emotionalState) && (
-                <div>
-                  <p>
-                    It seems work and chores may be taking over your work-life
-                    balance.
-                  </p>
-                  <Link
-                    to="/Resources"
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <p style={{ backgroundColor: "green" }}>
-                      Feel free to check our resources to find out ways in which
-                      you could improve this.
-                    </p>
-                  </Link>
-                </div>
-              )) ||
-            (totalSleep + totalLeisure + totalSelfCare ===
-              totalWork + totalChores && (
-              <div>
-                <p>
-                  You seem to have a pretty good work-life balance, congrats!
-                </p>
-              </div>
-            )) || <div />}
+            </div>
+          </section>
         </div>
-      </div>
+        <div className="quote">
+          <h2>
+            "The bad news is time flies. The good news is you're the pilot."
+          </h2>
+          <p>Michael Altshuler, Motivational Speaker</p>
+        </div>
+      </>
     );
   }
 }
