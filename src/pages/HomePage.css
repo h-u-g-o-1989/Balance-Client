@@ -1,0 +1,50 @@
+/* .HomePage html,
+body {
+  background: #fff;
+  height: 300vh;
+  color: #fff;
+} */
+
+.content {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+  max-width: 100%;
+  width: 100vw;
+  margin-top: -100px;
+}
+
+.div {
+  background: #333;
+  font-size: 30px;
+  font-weight: bold;
+  height: 200px;
+  line-height: 200px;
+  margin: 2em;
+  text-align: center;
+  width: 300px;
+}
+.info {
+  width: 50vw;
+  font-size: 16px;
+  background: white;
+  color: black;
+  margin: 2em;
+}
+.one {
+  background-color: #5b3bba;
+  color: white;
+}
+
+.two {
+  background-color: #9aba3b;
+  position: absolute;
+  color: white;
+}
+
+.three {
+  background-color: #3bba9c;
+  color: white;
+}
