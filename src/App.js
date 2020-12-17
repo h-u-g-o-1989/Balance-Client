@@ -94,6 +94,7 @@ class App extends React.Component {
         style={{
           backgroundImage: "url(/chevron.png)",
           backgroundRepeat: "repeat",
+          height: "100%",
         }}
       >
         <Navbar handleLogout={this.handleLogout} user={this.state.user} />
