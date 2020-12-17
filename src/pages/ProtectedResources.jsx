@@ -3,8 +3,8 @@ import "./ProtectedResources.css";
 
 const ProtectedResources = () => {
   return (
-    <div>
-      <h1>Find the best resources to help manage your work-life balance</h1>
+    <div className="resourcesPage">
+      <h2>Find the best resources to help manage your work-life balance</h2>
 
       <div className="external-resources">
         <div className="external-header">
