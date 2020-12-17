@@ -4,6 +4,7 @@ import {
   getSingleDay,
   getDayAndDelete,
 } from "../services/auth";
+import "./Edit.css";
 
 const hoursOptions = new Array(25).fill(1).map((_, i) => i);
 const monthsOptions = new Array(31).fill(1).map((_, i) => i + 1);
@@ -77,11 +78,11 @@ class Edit extends React.Component {
     // console.log(counterOfHours);
     // console.log("Dayinfo", this.state.dayInfo);
     return (
-      <div>
-        <h1>{counterOfHours} h scheduled</h1>
+      <div className="editForm">
+        <h2>Edit your data</h2>
         <form onSubmit={this.handleSubmit}>
           <label>
-            <label htmlFor="work">Work</label>
+            <label htmlFor="work">Work: </label>
             <select
               name="work"
               value={this.state.dayInfo.work}
@@ -92,7 +93,7 @@ class Edit extends React.Component {
               ))}
             </select>
             <br />
-            <label htmlFor="sleep">Sleep</label>
+            <label htmlFor="sleep">Sleep: </label>
             <select
               name="sleep"
               value={this.state.dayInfo.sleep}
@@ -103,7 +104,7 @@ class Edit extends React.Component {
               ))}
             </select>
             <br />
-            <label htmlFor="chores">Chores</label>
+            <label htmlFor="chores">Chores: </label>
             <select
               name="chores"
               value={this.state.dayInfo.chores}
@@ -114,7 +115,7 @@ class Edit extends React.Component {
               ))}
             </select>
             <br />
-            <label htmlFor="leisure">Leisure</label>
+            <label htmlFor="leisure">Leisure: </label>
             <select
               name="leisure"
               value={this.state.dayInfo.leisure}
@@ -125,7 +126,7 @@ class Edit extends React.Component {
               ))}
             </select>
             <br />
-            <label htmlFor="selfCare">Self-Care</label>
+            <label htmlFor="selfCare">Self-Care: </label>
             <select
               name="selfCare"
               value={this.state.dayInfo.selfCare}
@@ -136,7 +137,7 @@ class Edit extends React.Component {
               ))}
             </select>
             <br />
-            <label htmlFor="mood">Mood of the Day</label>
+            <label htmlFor="mood">Mood of the Day: </label>
             <select
               name="mood"
               value={this.state.dayInfo.mood}
@@ -152,7 +153,7 @@ class Edit extends React.Component {
               <option value="Tired">Tired</option>
             </select>
             <br />
-            <label htmlFor="day">Day</label>
+            <label htmlFor="day">Day: </label>
             <select
               name="day"
               value={this.state.dayInfo.day}
@@ -163,7 +164,7 @@ class Edit extends React.Component {
               ))}
             </select>
             <br />
-            <label htmlFor="month">Month</label>
+            <label htmlFor="month">Month: </label>
             <select
               name="month"
               value={this.state.dayInfo.month}
@@ -184,15 +185,21 @@ class Edit extends React.Component {
             </select>
           </label>
           <br />
+          <h2>{counterOfHours} h scheduled</h2>
+
           {counterOfHours > 24 ? (
             <h1>Too many hours</h1>
           ) : counterOfHours < 24 ? (
             <h3>Please make sure the total adds up to 24h.</h3>
           ) : (
-            <button type="¨submit">Submit</button>
+            <button className="editButton" type="submit">
+              Submit
+            </button>
           )}
 
-          <button onClick={this.handleDelete}>Delete this data</button>
+          <button className="deleteData" onClick={this.handleDelete}>
+            Delete this data
+          </button>
         </form>
       </div>
     );

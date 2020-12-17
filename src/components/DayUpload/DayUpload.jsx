@@ -180,7 +180,9 @@ class DayUpload extends React.Component {
           ) : counterOfHours < 24 ? (
             <h3>Please make sure the total adds up to 24h.</h3>
           ) : (
-            <button type="¨submit">Submit</button>
+            <button className="submitButton" type="submit">
+              Submit
+            </button>
           )}
         </form>
       </div>

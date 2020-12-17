@@ -7,14 +7,16 @@
   box-shadow: 0 0 5px 0 darkgrey;
   border-radius: 15px;
   margin: 5em;
+  background: white;
 }
-/* .eachMonthCardHome {
+.eachMonthCardHome {
   border: 2px solid lightgrey;
   box-shadow: 0 0 5px 0 darkgrey;
   border-radius: 15px;
   margin: 4em;
   overflow: hidden;
-} */
+  background: white;
+}
 .months {
   color: #3bba9c;
   font-weight: 600;

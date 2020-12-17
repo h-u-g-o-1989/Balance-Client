@@ -49,3 +49,24 @@
 .uploadForm h2 {
   color: #3bba9c;
 }
+.submitButton {
+  font-family: inherit;
+  font-weight: inherit;
+  padding: 0.5em 1em;
+  margin-left: 1em;
+  background-color: #707793;
+  box-shadow: 0 0 5px 0 white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  color: #e3f2ff;
+  transition: all 0.2s ease-in-out;
+  /* position: sticky; */
+  top: 0;
+}
+.submitButton:hover {
+  transform: scale(1.05);
+  font-size: 15px;
+  background-color: gold;
+  color: #3bba9c;
+}

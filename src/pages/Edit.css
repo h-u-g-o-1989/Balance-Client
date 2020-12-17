@@ -1,0 +1,53 @@
+.editForm {
+  border: 2px solid lightgrey;
+  box-shadow: 0 0 5px 0 darkgrey;
+  border-radius: 15px;
+  margin: 5em auto;
+  width: 40%;
+  background-color: white;
+  padding: 2em;
+}
+.editForm h2 {
+  color: #3bba9c;
+}
+.editButton {
+  font-family: inherit;
+  font-weight: inherit;
+  padding: 0.5em 1em;
+  margin: 1em;
+  background-color: #707793;
+  box-shadow: 0 0 5px 0 white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  color: #e3f2ff;
+  transition: all 0.2s ease-in-out;
+  /* position: sticky; */
+  top: 0;
+}
+.editButton:hover {
+  transform: scale(1.05);
+  font-size: 15px;
+  background-color: gold;
+  color: #3bba9c;
+}
+.deleteData {
+  font-family: inherit;
+  font-weight: inherit;
+  padding: 0.5em 1em;
+  margin: 1em;
+  background-color: #707793;
+  box-shadow: 0 0 5px 0 white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  color: #e3f2ff;
+  transition: all 0.2s ease-in-out;
+  /* position: sticky; */
+  top: 0;
+}
+.deleteData:hover {
+  transform: scale(1.05);
+  font-size: 15px;
+  background-color: red;
+}
