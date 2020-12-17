@@ -1,14 +1,18 @@
 .all-days {
-  /* overflow: scroll; */
+  display: flex;
+  align-items: center;
 }
 .parentDiv {
   border: 2px solid lightgrey;
   box-shadow: 0 0 5px 0 darkgrey;
   background: white;
   border-radius: 15px;
-  margin: 2em;
-  margin-left: 9em;
+  margin: 5em 0 5em 7em;
+  /* margin-left: 7em;
+  margin-bottom: 40em; */
   width: 83%;
+  height: 80vh;
+  padding: 2em;
 }
 
 .parentDiv h1 {
