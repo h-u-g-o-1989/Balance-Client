@@ -55,7 +55,7 @@ class ProtectedDay extends Component {
 
     return (
       <div className="all-days">
-        <div>
+        <div className="mappedDays">
           {this.state.days.map((day, i) => (
             <div className="parentDiv" key={day._id}>
               <h1>
@@ -63,7 +63,14 @@ class ProtectedDay extends Component {
               </h1>
               <h2>Mood of the Day: {day.mood}</h2>
               {/* EDIT DAY BUTTON HERE */}
-              <Link to={`/edit/${day._id}`}>Edit Days Routine</Link>
+              <button>
+                <Link
+                  to={`/edit/${day._id}`}
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Edit Days Routine
+                </Link>
+              </button>
               {/* <br />
               <Link to={`/delete/${day._id}`}>Delete</Link> */}
               <div className="App">
@@ -77,15 +84,13 @@ class ProtectedDay extends Component {
                   mood={chartData[day.mood]}
                 />
 
-                <div
-                  style={{
-                    backgroundColor: "red",
-                    width: "50%",
-                    display: "flex",
-                    justifyContent: "center",
-                    margin: "0 auto",
-                  }}
-                >
+                <div className="conditionalStatements">
+                  <Link
+                    to="/Resources"
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <h3>balance tips</h3>
+                  </Link>
                   {/* CONDITIONALS */}
                   {(day.work > 8 &&
                     day.sleep < 7 &&

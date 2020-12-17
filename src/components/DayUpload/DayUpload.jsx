@@ -64,10 +64,9 @@ class DayUpload extends React.Component {
       +this.state.selfCare;
     return (
       <div>
-        <h1>{counterOfHours} h scheduled</h1>
         <form onSubmit={this.handleSubmit}>
           <label>
-            <label htmlFor="work">Work</label>
+            <label htmlFor="work">Work: </label>
             <select
               name="work"
               value={this.state.work}
@@ -78,7 +77,7 @@ class DayUpload extends React.Component {
               ))}
             </select>
             <br />
-            <label htmlFor="sleep">Sleep</label>
+            <label htmlFor="sleep">Sleep: </label>
             <select
               name="sleep"
               value={this.state.sleep}
@@ -89,7 +88,7 @@ class DayUpload extends React.Component {
               ))}
             </select>
             <br />
-            <label htmlFor="chores">Chores</label>
+            <label htmlFor="chores">Chores: </label>
             <select
               name="chores"
               value={this.state.chores}
@@ -100,7 +99,7 @@ class DayUpload extends React.Component {
               ))}
             </select>
             <br />
-            <label htmlFor="leisure">Leisure</label>
+            <label htmlFor="leisure">Leisure: </label>
             <select
               name="leisure"
               value={this.state.leisure}
@@ -111,7 +110,7 @@ class DayUpload extends React.Component {
               ))}
             </select>
             <br />
-            <label htmlFor="selfCare">Self-Care</label>
+            <label htmlFor="selfCare">Self-Care: </label>
             <select
               name="selfCare"
               value={this.state.selfCare}
@@ -122,7 +121,7 @@ class DayUpload extends React.Component {
               ))}
             </select>
             <br />
-            <label htmlFor="mood">Mood of the Day</label>
+            <label htmlFor="mood">Mood of the Day: </label>
             <select
               name="mood"
               value={this.state.mood}
@@ -138,7 +137,7 @@ class DayUpload extends React.Component {
               <option value="Tired">Tired</option>
             </select>
             <br />
-            <label htmlFor="day">Day</label>
+            <label htmlFor="day">Day: </label>
             <select
               name="day"
               value={this.state.day}
@@ -149,7 +148,7 @@ class DayUpload extends React.Component {
               ))}
             </select>
             <br />
-            <label htmlFor="month">Month</label>
+            <label htmlFor="month">Month: </label>
             <select
               name="month"
               value={this.state.month}
@@ -170,7 +169,7 @@ class DayUpload extends React.Component {
             </select>
           </label>
           <br />
-
+          <h2>{counterOfHours} h scheduled</h2>
           {/* {(this.state.total > 24 && <h1>Too many hours</h1>) ||
             (this.state.total < 24 && (
               <h3>Please make sure the total adds up to 24h.</h3>

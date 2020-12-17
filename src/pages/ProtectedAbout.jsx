@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { deleteAccount } from "../services/auth";
+import "./ProtectedAbout.css";
 
 export default class ProtectedAbout extends Component {
   deleteAccount = () => {
@@ -8,9 +9,9 @@ export default class ProtectedAbout extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h1>About us</h1>
+      <div className="aboutPage">
+        <div className="aboutUs">
+          <h2>About us</h2>
           <p>
             Balance is an app designed to help you find your work-life balance,
             offering you useful resources to help ease the struggles of modern
@@ -32,10 +33,24 @@ export default class ProtectedAbout extends Component {
             </a>
             .
           </p>
+          <p>
+            You can visit{" "}
+            <a href="https://www.linkedin.com/in/msastreharo/" target="_blank">
+              Marta's LinkedIn profile
+            </a>{" "}
+            and here for{" "}
+            <a
+              href="https://www.linkedin.com/in/hugo-embleton-black/"
+              target="_blank"
+            >
+              Hugo's LinkedIn profile
+            </a>
+            .
+          </p>
         </div>
 
         <br />
-        <div>
+        <div className="aboutUs">
           <h2>Contact us</h2>
           <p>info@balance.com</p>
           <p>123 Bridgeton Road,</p>
@@ -43,7 +58,8 @@ export default class ProtectedAbout extends Component {
           <p>+44 789 789 789</p>
         </div>
         <br />
-        <div>
+
+        <div className="aboutUs">
           <h2>No longer want to use Balance?</h2>
           <p>
             We are always looking for suggestions to improve our app, so if you
@@ -52,7 +68,9 @@ export default class ProtectedAbout extends Component {
             always delete your account (this action is permanent so proceed with
             caution).
           </p>
-          <button onClick={this.deleteAccount}>Delete your account</button>
+          <button className="deleteAccountButton" onClick={this.deleteAccount}>
+            Delete your account
+          </button>
         </div>
       </div>
     );

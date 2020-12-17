@@ -100,7 +100,12 @@ const MonthComponent = (props) => {
           </p>
 
           <div className="conditionalStatements">
-            <h3>balance tips</h3>
+            <Link
+              to="/Resources"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <h3>balance tips</h3>
+            </Link>
             {/* CONDITIONALS */}
             {(tooMuchWork > 33 &&
               ["Sad", "Stressed", "Angry", "Tired"].includes(

@@ -1,21 +1,57 @@
 .all-days {
-  display: flex;
-  flex-direction: row;
-  max-width: 90%;
+  /* overflow: scroll; */
 }
-
-.card-days {
-  display: flex;
-  flex-direction: row;
-  max-width: 90%;
-}
-
 .parentDiv {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid grey;
+  border: 2px solid lightgrey;
+  box-shadow: 0 0 5px 0 darkgrey;
   border-radius: 15px;
-  width: 40%;
-  margin: 10px;
+  margin: 2em;
+  margin-left: 9em;
+  width: 83%;
+}
+
+.parentDiv h1 {
+  color: #3bba9c;
+}
+
+.conditionalStatements h3 {
+  color: #3bba9c;
+  border-bottom: 1px solid #3bba9c;
+  padding-bottom: 2px;
+  width: 120px;
+}
+.mappedDays {
+  display: grid;
+  grid-template-rows: 30% 30% 30%;
+  grid-template-columns: 30% 30% 30%;
+}
+.mappedDays button {
+  font-family: inherit;
+  font-weight: inherit;
+  padding: 0.5em 1em;
+  margin-left: 1em;
+  background-color: #3bba9c;
+  box-shadow: 0 0 5px 0 white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  color: #e3f2ff;
+  transition: all 0.2s ease-in-out;
+  /* position: sticky; */
+}
+
+.mappedDays button:hover {
+  transform: scale(1.05);
+  font-size: 15px;
+}
+.mappedDays Link {
+  color: white;
+  text-decoration: none;
+}
+.all-days {
+  display: flex;
   justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  /* border: 3px solid red; */
 }

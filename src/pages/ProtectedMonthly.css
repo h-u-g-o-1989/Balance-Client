@@ -8,13 +8,13 @@
   border-radius: 15px;
   margin: 5em;
 }
-.eachMonthCardHome {
+/* .eachMonthCardHome {
   border: 2px solid lightgrey;
   box-shadow: 0 0 5px 0 darkgrey;
   border-radius: 15px;
   margin: 4em;
   overflow: hidden;
-}
+} */
 .months {
   color: #3bba9c;
   font-weight: 600;
@@ -46,15 +46,13 @@
   margin-left: -100px;
   /* height: 100%; */
 }
-.chart {
-  /* border: 2px solid black; */
-  /* height: 400px; */
-}
+
 .conditionalStatements h3 {
   color: #3bba9c;
   border-bottom: 1px solid #3bba9c;
   padding-bottom: 2px;
   width: 120px;
+  margin-left: 2em;
 }
 .quote {
   color: #3bba9c;

@@ -5,8 +5,8 @@ import "./ProtectedUpload.css";
 class ProtectedUpload extends React.Component {
   render() {
     return (
-      <div>
-        <h1>Upload your daily data</h1>
+      <div className="uploadForm">
+        <h2>Upload your daily data</h2>
         <DayUpload history={this.props.history} />
 
         <div className="dropdown">

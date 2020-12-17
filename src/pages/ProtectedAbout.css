@@ -1,0 +1,44 @@
+.aboutPage {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.aboutUs {
+  width: 50%;
+  border: 2px solid lightgrey;
+  box-shadow: 0 0 5px 0 darkgrey;
+  border-radius: 15px;
+  margin: 1em;
+  padding: 2em;
+}
+
+.aboutUs a {
+  color: #3bba9c;
+  text-decoration: none;
+}
+.aboutUs h2 {
+  color: #3bba9c;
+}
+.deleteAccountButton {
+  font-family: inherit;
+  font-weight: inherit;
+  padding: 0.5em 1em;
+  margin-left: 1em;
+  background-color: #707793;
+  box-shadow: 0 0 5px 0 white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  color: #e3f2ff;
+  transition: all 0.2s ease-in-out;
+  /* position: sticky; */
+  top: 0;
+}
+
+.deleteAccountButton:hover {
+  transform: scale(1.05);
+  font-size: 15px;
+  background-color: #df0909;
+}

@@ -89,7 +89,13 @@ class App extends React.Component {
     }
 
     return (
-      <div className="App">
+      <div
+        className="App"
+        style={{
+          backgroundImage: "url(/chevron.png)",
+          backgroundRepeat: "repeat",
+        }}
+      >
         <Navbar handleLogout={this.handleLogout} user={this.state.user} />
         <Switch>
           <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
