@@ -22,6 +22,7 @@ const MonthComponent = (props) => {
   // console.log("¨props", props);
   const { month, data } = props;
   const totalHours = data.length * 24;
+  console.log("DAYS", data.length);
 
   const total = data.reduce((acc, val) => {
     return {
@@ -61,7 +62,8 @@ const MonthComponent = (props) => {
       <div className="heading">
         <h2>
           During the month of <span className="months">{month}</span> (a total
-          of {totalHours} hours), this is how you have balanced your life...
+          of {data.length} days, or {totalHours} hours), this is how you have
+          balanced your life...
         </h2>
       </div>
 
