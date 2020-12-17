@@ -7,9 +7,7 @@
   box-shadow: 0 0 5px 0 darkgrey;
   background: white;
   border-radius: 15px;
-  margin: 5em 0 5em 7em;
-  /* margin-left: 7em;
-  margin-bottom: 40em; */
+  margin: 1em 0em 1em 3em;
   width: 83%;
   height: 80vh;
   padding: 2em;
@@ -27,8 +25,8 @@
 }
 .mappedDays {
   display: grid;
-  grid-template-rows: 30% 30% 30%;
-  grid-template-columns: 30% 30% 30%;
+  grid-template-rows: max-content;
+  grid-template-columns: 50% 50%;
 }
 .mappedDays button {
   font-family: inherit;
