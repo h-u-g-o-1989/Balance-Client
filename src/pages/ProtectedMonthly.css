@@ -41,6 +41,9 @@
   /* border: 2px solid green; */
   width: 30%;
   text-align: left;
+  overflow: hidden;
+  z-index: 1;
+  margin-left: -100px;
   /* height: 100%; */
 }
 .chart {

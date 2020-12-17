@@ -66,7 +66,6 @@ class ProtectedHome extends Component {
         }
         m = 0;
       }
-
       return item;
     }
     const emotionalState = findMostFrequent(arr);
@@ -91,8 +90,8 @@ class ProtectedHome extends Component {
         <div className="eachMonthCardHome">
           <div className="heading">
             <h2>
-              Over the last {numberOfDays} days (a total of {totalHours} hours
-              ), this is how you have balanced your life,
+              Over the last {numberOfDays} days (a total of {totalHours} hours),
+              this is how you have balanced your life,
             </h2>
           </div>
 
@@ -136,7 +135,12 @@ class ProtectedHome extends Component {
               </p>
 
               <div className="conditionalStatements">
-                <h3>balance tips</h3>
+                <Link
+                  to="/Resources"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <h3>balance tips</h3>
+                </Link>
                 {/* CONDITIONALS */}
                 {(tooMuchWork > 33 &&
                   ["Sad", "Stressed", "Angry", "Tired"].includes(
@@ -148,7 +152,7 @@ class ProtectedHome extends Component {
                         to="/Resources"
                         style={{ textDecoration: "none", color: "black" }}
                       >
-                        <p style={{ backgroundColor: "green" }}>
+                        <p style={{ color: "#3bba9c" }}>
                           Here are some suggestions at how to improve your
                           balance.
                         </p>
@@ -165,7 +169,7 @@ class ProtectedHome extends Component {
                           to="/Resources"
                           style={{ textDecoration: "none", color: "black" }}
                         >
-                          <p style={{ backgroundColor: "green" }}>
+                          <p style={{ color: "#3bba9c" }}>
                             Here are some suggestions at how to improve your
                             balance.
                           </p>
@@ -182,7 +186,7 @@ class ProtectedHome extends Component {
                           to="/Resources"
                           style={{ textDecoration: "none", color: "black" }}
                         >
-                          <p style={{ backgroundColor: "green" }}>
+                          <p style={{ color: "#3bba9c" }}>
                             Here are some suggestions at how to improve your
                             balance.
                           </p>
@@ -201,7 +205,7 @@ class ProtectedHome extends Component {
                           to="/Resources"
                           style={{ textDecoration: "none", color: "black" }}
                         >
-                          <p style={{ backgroundColor: "green" }}>
+                          <p style={{ color: "#3bba9c" }}>
                             Here are some suggestions at how to improve your
                             balance.
                           </p>
@@ -220,7 +224,7 @@ class ProtectedHome extends Component {
                           to="/Resources"
                           style={{ textDecoration: "none", color: "black" }}
                         >
-                          <p style={{ backgroundColor: "green" }}>
+                          <p style={{ color: "#3bba9c" }}>
                             Here are some suggestions at how to improve your
                             balance.
                           </p>
@@ -249,7 +253,7 @@ class ProtectedHome extends Component {
                           to="/Resources"
                           style={{ textDecoration: "none", color: "black" }}
                         >
-                          <p style={{ backgroundColor: "green" }}>
+                          <p style={{ color: "#3bba9c" }}>
                             Feel free to check our resources to find out ways in
                             which you could improve this.
                           </p>

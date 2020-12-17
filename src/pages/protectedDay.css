@@ -1,1 +1,21 @@
+.all-days {
+  display: flex;
+  flex-direction: row;
+  max-width: 90%;
+}
 
+.card-days {
+  display: flex;
+  flex-direction: row;
+  max-width: 90%;
+}
+
+.parentDiv {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  border-radius: 15px;
+  width: 40%;
+  margin: 10px;
+  justify-content: center;
+}

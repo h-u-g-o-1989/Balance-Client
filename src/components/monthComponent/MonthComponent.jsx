@@ -15,7 +15,6 @@ function findMostFrequent(arr) {
   // console.log(obj);
 
   const biggest = Object.entries(obj).sort((a, b) => a[0] - b[0]);
-  // console.log("¨THE BIGGEST", biggest);
   return biggest[0][0];
 }
 
@@ -108,14 +107,12 @@ const MonthComponent = (props) => {
                 emotionalState
               ) && (
                 <div>
-                  <p>
-                    It appears that overworking may be affecting your mood. 😥
-                  </p>
+                  <p>It appears that overworking may be affecting your mood.</p>
                   <Link
                     to="/Resources"
                     style={{ textDecoration: "none", color: "black" }}
                   >
-                    <p>
+                    <p style={{ color: "#3bba9c" }}>
                       {" "}
                       Here are some suggestions at how to improve your balance.
                     </p>
@@ -132,7 +129,7 @@ const MonthComponent = (props) => {
                       to="/Resources"
                       style={{ textDecoration: "none", color: "black" }}
                     >
-                      <p>
+                      <p style={{ color: "#3bba9c" }}>
                         {" "}
                         Here are some suggestions at how to improve your
                         balance.
@@ -150,7 +147,7 @@ const MonthComponent = (props) => {
                       to="/Resources"
                       style={{ textDecoration: "none", color: "black" }}
                     >
-                      <p>
+                      <p style={{ color: "#3bba9c" }}>
                         {" "}
                         Here are some suggestions at how to improve your
                         balance.
@@ -168,7 +165,7 @@ const MonthComponent = (props) => {
                       to="/Resources"
                       style={{ textDecoration: "none", color: "black" }}
                     >
-                      <p>
+                      <p style={{ color: "#3bba9c" }}>
                         {" "}
                         Here are some suggestions at how to improve your
                         balance.
@@ -186,7 +183,7 @@ const MonthComponent = (props) => {
                       to="/Resources"
                       style={{ textDecoration: "none", color: "black" }}
                     >
-                      <p>
+                      <p style={{ color: "#3bba9c" }}>
                         {" "}
                         Here are some suggestions at how to improve your
                         balance.
@@ -215,7 +212,7 @@ const MonthComponent = (props) => {
                     to="/Resources"
                     style={{ textDecoration: "none", color: "black" }}
                   >
-                    <p>
+                    <p style={{ color: "#3bba9c" }}>
                       Feel free to check our resources to find out ways in which
                       you could improve this.
                     </p>
