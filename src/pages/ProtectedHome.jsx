@@ -91,8 +91,9 @@ class ProtectedHome extends Component {
         <div className="eachMonthCardHome">
           <div className="heading">
             <h2>
-              Over the last {numberOfDays} days (a total of {totalHours} hours
-              ), this is how you have balanced your life,
+              Since you started using the app, you have tracked {numberOfDays}{" "}
+              days (a total of {totalHours} hours ), and this is what your data
+              says about your work-life balance:
             </h2>
           </div>
 
